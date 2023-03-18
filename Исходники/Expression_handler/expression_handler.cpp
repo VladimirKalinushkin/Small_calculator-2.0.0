@@ -41,9 +41,8 @@ bool set_Varriable() {
 
 }
 
-void expression_handler() {
+void main_menu() {
 
-    bool is_set_varriable = false;
 
     while (cin) {
         cout << promt;
@@ -60,21 +59,9 @@ void expression_handler() {
                     help_out();
                     continue;
                     break;}
-                case type_is_keyword: {
-                    if ( oper.word == inicialise_word ) inicialise_Varriable();
-                    break;}
                 default: {
                     Stream.putback(oper);
-                    if ( oper.type == type_is_varriable ) {
-                        is_set_varriable = set_Varriable();
-                    }
-                    if ( !is_set_varriable ) {
-                        double result = third_order();
-                        cout
-                            << print_result
-                            << result
-                            << '\n';
-                    }
+                    expression_handler();
                     break;
                 }
             }
@@ -89,4 +76,33 @@ void expression_handler() {
 
     }
     
+}
+
+void expression_handler(){
+
+    
+    Token oper = Stream.get();
+
+    switch (oper.type) {
+
+    case type_is_keyword: {
+        if ( oper.word == inicialise_word ) inicialise_Varriable();
+        break;
+        }
+
+    case type_is_varriable: {
+        set_Varriable();
+        break;
+        }
+
+    default:{
+        Stream.putback(oper);
+        double result = third_order();
+            cout
+                << print_result
+                << result
+                << '\n';
+        }
+    };
+
 }
