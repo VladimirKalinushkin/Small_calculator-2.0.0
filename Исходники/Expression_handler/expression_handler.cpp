@@ -43,8 +43,8 @@ bool set_Varriable() {
 
 void expression_handler(){
 
-    
     Token oper = Stream.get();
+    bool is_set_varriable = false;
 
     switch (oper.type) {
 
@@ -53,17 +53,22 @@ void expression_handler(){
             inicialise_Varriable();
         break;
         
-    case type_is_varriable: 
-        set_Varriable();
-        break;
-        
-    default:
+    default: {
         Stream.putback(oper);
-        double result = third_order();
+        
+        if ( oper.type == type_is_varriable )
+            is_set_varriable = set_Varriable();
+        
+        if ( !is_set_varriable ) {
+            double result = third_order();
             cout
                 << print_result
                 << result
                 << '\n';
+        }
+        break;
+        }
+
     }
 
     if(Stream.get().type != print) {
