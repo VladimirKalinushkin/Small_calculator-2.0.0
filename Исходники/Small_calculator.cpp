@@ -9,7 +9,7 @@ int main() {
 
     try {
 
-        expression_handler();
+        main_menu();
 
     }
     catch(const char* err){
