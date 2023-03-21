@@ -1,5 +1,8 @@
 
 #include "Standart/standart_includes_for_cpp.h"
+#include "Standart/Roman_int.hpp"
+
+TokenStream Stream;
 
 const char exit_simbol = 'q';
 const char* promt = ">>";
@@ -14,7 +17,7 @@ const char type_is_constante = 'c';
 const char type_is_keyword = 'k';
 const char type_is_varriable = 'v';
 const char type_is_function = 'f';
-const char type_is_Roman_int = 'f';
+const char type_is_Roman_int = 'r';
 
 const double pi = 3.14159265;
 const char* pi_name = "pi";
@@ -37,6 +40,37 @@ const char* ceil_name = "ceil";
 const char* floor_name = "floor";
 const char* fmod_name = "fmod";
 
+
+
+#include "TokenStream/Stream.cpp"
+#include "Expression_handler/expression_handler.cpp"
+#include "Expression_handler_for_Roman_int/expression_handler_for_Roman_int.cpp"
+
+
+
+void inicialiseStream(TokenStream& Stream){
+
+    Stream.inicialise_Constantes(Token (pi_name, pi));
+    Stream.inicialise_Constantes(Token (e_name, e));
+
+    Stream.inicialise_KeyWords(Token (inicialise_word));
+
+    Stream.inicialise_FunctionsName(Token (cos_name));
+    Stream.inicialise_FunctionsName(Token (sin_name));
+    Stream.inicialise_FunctionsName(Token (tan_name));
+    Stream.inicialise_FunctionsName(Token (asin_name));
+    Stream.inicialise_FunctionsName(Token (acos_name));
+    Stream.inicialise_FunctionsName(Token (atan_name));
+    Stream.inicialise_FunctionsName(Token (sqrt_name));
+    Stream.inicialise_FunctionsName(Token (abs_name));
+    Stream.inicialise_FunctionsName(Token (ln_name));
+    Stream.inicialise_FunctionsName(Token (log_name));
+    Stream.inicialise_FunctionsName(Token (ceil_name));
+    Stream.inicialise_FunctionsName(Token (floor_name));
+    Stream.inicialise_FunctionsName(Token (fmod_name));
+
+
+}
 
 void help_out(){
 
@@ -70,39 +104,3 @@ void welcome_words() {
         << '\n'
         << '\n';
 }
-
-
-#include "TokenStream/Stream.cpp"
-
-TokenStream Stream;
-
-#include "Expression_handler/expression_handler.cpp"
-#include "Expression_handler_for_Roman_int/Expression_handler_for_Roman_int.cpp"
-
-TokenStream Stream;
-
-void inicialiseStream(TokenStream& Stream){
-
-    Stream.inicialise_Constantes(Token (pi_name, pi));
-    Stream.inicialise_Constantes(Token (e_name, e));
-
-    Stream.inicialise_KeyWords(Token (inicialise_word));
-
-    Stream.inicialise_FunctionsName(Token (cos_name));
-    Stream.inicialise_FunctionsName(Token (sin_name));
-    Stream.inicialise_FunctionsName(Token (tan_name));
-    Stream.inicialise_FunctionsName(Token (asin_name));
-    Stream.inicialise_FunctionsName(Token (acos_name));
-    Stream.inicialise_FunctionsName(Token (atan_name));
-    Stream.inicialise_FunctionsName(Token (sqrt_name));
-    Stream.inicialise_FunctionsName(Token (abs_name));
-    Stream.inicialise_FunctionsName(Token (ln_name));
-    Stream.inicialise_FunctionsName(Token (log_name));
-    Stream.inicialise_FunctionsName(Token (ceil_name));
-    Stream.inicialise_FunctionsName(Token (floor_name));
-    Stream.inicialise_FunctionsName(Token (fmod_name));
-
-
-}
-
-

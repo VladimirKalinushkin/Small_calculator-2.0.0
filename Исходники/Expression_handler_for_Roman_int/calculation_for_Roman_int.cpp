@@ -8,7 +8,7 @@ Roman_int third_order_for_Roman_int()
 
     while (cin) {
 
-        Token_for_Roman_int oper = Stream_RI.get(cin);
+        Token oper = Stream.get();
         
         switch (oper.type) {
             case '+':{
@@ -20,7 +20,7 @@ Roman_int third_order_for_Roman_int()
                 value -= second_value;
                 break;}
             default:{
-                Stream_RI.putback(oper);
+                Stream.putback(oper);
                 return value;
                 break;}
         }
@@ -34,7 +34,7 @@ Roman_int second_order_for_Roman_int()
 
     while (cin) {
 
-        Token_for_Roman_int oper = Stream_RI.get(cin);
+        Token oper = Stream.get();
         
         switch (oper.type) {
             case '*':{
@@ -46,7 +46,7 @@ Roman_int second_order_for_Roman_int()
                 value /= second_value;
                 break;}
             default:{
-                Stream_RI.putback(oper);
+                Stream.putback(oper);
                 return value;
                 break;}
         }
@@ -56,32 +56,45 @@ Roman_int second_order_for_Roman_int()
 }
 Roman_int primary_for_Roman_int()
 {
-    Token_for_Roman_int oper = Stream_RI.get(cin);
+    Token oper = Stream.get();
 
     switch (oper.type) {
 
-        case type_is_Roman_int:{
+        case type_is_word:{
 
-            return oper.value;
+            oper.roman_value.set(oper.word);
+            if(oper.roman_value.empty())
+                throw "Неправильный ввод!";
+
+            return oper.roman_value;
             break;
 
         }
         case '+':{
+
             return primary_for_Roman_int();
-            break;}
+            break;
+            
+        }
         case '(':{
 
             Roman_int result = third_order_for_Roman_int();
-            oper = Stream_RI.get(cin);
-            if (oper.type != ')') throw "нет ')' \n";
-            else return result;
+
+            oper = Stream.get();
+            if (oper.type != ')')
+                throw "нет ')' \n";
+
+            return result;
             break;
 
         }
         default:{
+
             throw " Нет первичного выражения! \n";
-            break;}
+            break;
+        
+        }
     }
 
-    return oper.value;
+    return oper.roman_value;
 }

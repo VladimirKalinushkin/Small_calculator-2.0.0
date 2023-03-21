@@ -1,5 +1,5 @@
 
-#include "Expression_handler_for_Roman_int.h"
+#include "expression_handler_for_Roman_int.h"
 
 void expression_handler_for_Roman_int()
 {
@@ -17,7 +17,7 @@ void expression_handler_for_Roman_int()
         ex.what();
     }
 
-    if(Stream_RI.get(cin).type !=  print) 
+    if(Stream.get().type !=  print) 
         throw " Выражение неправильно завершено! Нет ';' \n";
     
 }
