@@ -30,7 +30,7 @@ Roman_int third_order_for_Roman_int()
 }
 Roman_int second_order_for_Roman_int()
 {
-    Roman_int value = second_order_for_Roman_int();
+    Roman_int value = primary_for_Roman_int();
 
     while (cin) {
 
@@ -38,11 +38,11 @@ Roman_int second_order_for_Roman_int()
         
         switch (oper.type) {
             case '*':{
-                Roman_int second_value = second_order_for_Roman_int();
+                Roman_int second_value = primary_for_Roman_int();
                 value *= second_value;
                 break;}
             case '/':{
-                Roman_int second_value = second_order_for_Roman_int();
+                Roman_int second_value = primary_for_Roman_int();
                 value /= second_value;
                 break;}
             default:{

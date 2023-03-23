@@ -2,7 +2,6 @@
 #include "Standart/standart_includes_for_cpp.h"
 #include "Standart/Roman_int.hpp"
 
-TokenStream Stream;
 
 const char exit_simbol = 'q';
 const char* promt = ">>";
@@ -43,6 +42,9 @@ const char* fmod_name = "fmod";
 
 
 #include "TokenStream/Stream.cpp"
+
+TokenStream Stream;
+
 #include "Expression_handler/expression_handler.cpp"
 #include "Expression_handler_for_Roman_int/expression_handler_for_Roman_int.cpp"
 
