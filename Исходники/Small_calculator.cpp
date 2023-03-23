@@ -2,6 +2,23 @@
 #include "Small_calculator.h"
 
 
+void enable_mode(Settings & _settings)
+{
+    switch(_settings.get_mode())
+    {
+        case Arabian:
+            expression_handler();
+            break;
+        case Roman:
+            expression_handler_for_Roman_int();
+            break;
+        default:
+
+            break;
+    }
+}
+
+
 void main_menu() {
 
 
@@ -24,7 +41,7 @@ void main_menu() {
 
                 default: 
                     Stream.putback(oper);
-                    expression_handler();
+                    enable_mode(main_settings);
                     break;
                 
             }
