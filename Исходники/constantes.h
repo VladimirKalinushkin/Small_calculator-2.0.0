@@ -1,9 +1,14 @@
+
 const char exit_simbol = 'q';
 const char* promt = ">>";
 const char* print_result = ": ";
 const char print = ';';
 const char equality = '=';
 const char help = '?';
+const char settings = 's';
+
+const char mode_is_arabian = 'a';
+const char mode_is_roman = 'r';
 
 const char type_is_number = 'n';
 const char type_is_word = 'w';
@@ -11,7 +16,6 @@ const char type_is_constante = 'c';
 const char type_is_keyword = 'k';
 const char type_is_varriable = 'v';
 const char type_is_function = 'f';
-const char type_is_Roman_int = 'r';
 
 const double pi = 3.14159265;
 const char* pi_name = "pi";

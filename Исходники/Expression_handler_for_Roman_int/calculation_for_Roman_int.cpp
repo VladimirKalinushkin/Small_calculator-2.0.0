@@ -62,11 +62,13 @@ Roman_int primary_for_Roman_int()
 
         case type_is_word:{
 
-            oper.roman_value.set(oper.word);
-            if(oper.roman_value.empty())
+            Roman_int ret;
+            ret.set(oper.word);
+
+            if(ret.empty())
                 throw "Неправильный ввод!";
 
-            return oper.roman_value;
+            return ret;
             break;
 
         }
@@ -96,5 +98,4 @@ Roman_int primary_for_Roman_int()
         }
     }
 
-    return oper.roman_value;
 }

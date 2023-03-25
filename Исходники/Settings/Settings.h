@@ -1,14 +1,35 @@
 
-enum Modes_calculating {Arabian = 1, Roman = 2};
-
 class Settings
 {
 
-    Modes_calculating mode;
+    char _mode;
 
     public:
 
-        Settings() { mode = Roman; }
-        void set_mode(Modes_calculating _mode) {mode = _mode; }
-        Modes_calculating get_mode() { return mode; }
+        Settings() { _mode = mode_is_arabian; }
+
+        char get_mode() { return _mode; }
+
+        void set_main_settings();
+
+    private:
+
+        class exeption : public exception
+        {
+        public:
+            exeption(char *msg);
+            exeption(char *msg, char &bad_value);
+
+            void what();
+
+        private:
+            char *message = NULL;
+            char *bad_value_char = NULL;
+        };
+
+        void set_Mode_calculating();
+        char get_and_valid_Mode_calculating();
+
 };
+
+Settings main_settings;

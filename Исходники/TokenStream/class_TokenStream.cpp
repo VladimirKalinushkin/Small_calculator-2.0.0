@@ -80,3 +80,27 @@ void TokenStream::set_Varriable(string s, double value) {
     throw " Неизвестная переменная! \n";
 
 }
+
+void inicialiseStream(TokenStream& Stream){
+
+    Stream.inicialise_Constantes(Token (pi_name, pi));
+    Stream.inicialise_Constantes(Token (e_name, e));
+
+    Stream.inicialise_KeyWords(Token (inicialise_word));
+
+    Stream.inicialise_FunctionsName(Token (cos_name));
+    Stream.inicialise_FunctionsName(Token (sin_name));
+    Stream.inicialise_FunctionsName(Token (tan_name));
+    Stream.inicialise_FunctionsName(Token (asin_name));
+    Stream.inicialise_FunctionsName(Token (acos_name));
+    Stream.inicialise_FunctionsName(Token (atan_name));
+    Stream.inicialise_FunctionsName(Token (sqrt_name));
+    Stream.inicialise_FunctionsName(Token (abs_name));
+    Stream.inicialise_FunctionsName(Token (ln_name));
+    Stream.inicialise_FunctionsName(Token (log_name));
+    Stream.inicialise_FunctionsName(Token (ceil_name));
+    Stream.inicialise_FunctionsName(Token (floor_name));
+    Stream.inicialise_FunctionsName(Token (fmod_name));
+
+
+}
