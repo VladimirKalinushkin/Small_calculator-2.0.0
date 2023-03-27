@@ -1,73 +1,23 @@
 
 #include "expression_handler.h"
 
-void inicialise_Varriable(){
-
-    Token name = Stream.get();
-    if (name.type == type_is_word) {
-
-        if (Stream.get().type == equality) {
-
-            double value = third_order();
-            Stream.inicialise_Varriable(name.word, value);
-
-        }
-        else throw " Неправильно объявлена переменная! ('var' 'name' '=' 'выражение') \n";
-
-    }
-    else throw " Имя переменной занято! \n";
-
-}
-
-bool set_Varriable() {
+void expression_handler(TokenStream &Stream){
 
     Token oper = Stream.get();
-    Token new_oper = Stream.get();
+    Stream.putback(oper);
 
-    if ( new_oper.type == equality ) {
+    if(oper.type == type_is_keyword)
+        key_word_handler(Stream);
 
-        double value = third_order();
-        Stream.set_Varriable( oper.word, value );
-        return true;
+    else if ( set_Varriable(Stream) );
 
-    }
     else {
 
-        Stream.putback(new_oper);
-        Stream.putback(oper);
-        return false;
-
-    }
-
-}
-
-void expression_handler(){
-
-    Token oper = Stream.get();
-    bool is_set_varriable = false;
-
-    switch (oper.type) {
-
-    case type_is_keyword: 
-        if ( oper.word == inicialise_word ) 
-            inicialise_Varriable();
-        break;
-        
-    default: {
-        Stream.putback(oper);
-        
-        if ( oper.type == type_is_varriable )
-            is_set_varriable = set_Varriable();
-        
-        if ( !is_set_varriable ) {
-            double result = third_order();
-            cout
-                << print_result
-                << result
-                << '\n';
-        }
-        break;
-        }
+        double result = third_order(Stream);
+        cout
+            << print_result
+            << result
+            << '\n';
 
     }
 
@@ -76,3 +26,14 @@ void expression_handler(){
     }
 
 }
+
+void key_word_handler(TokenStream &Stream)
+{
+
+    Token key_word = Stream.get();
+
+    if ( key_word.word == inicialise_word ) 
+        set_new_varriable(Stream);
+
+}
+

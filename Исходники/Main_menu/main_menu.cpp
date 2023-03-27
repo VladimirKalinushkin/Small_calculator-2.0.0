@@ -1,7 +1,7 @@
 
 #include "main_menu.h"
 
-void main_menu() {
+void main_menu(Settings &Main_settings, TokenStream &Stream) {
 
     while (cin) {
         cout << promt;
@@ -21,13 +21,13 @@ void main_menu() {
                     break;
 
                 case settings:
-                    main_settings.set_main_settings();
+                    Main_settings.set_all_settings(Modes_calculating);
                     continue;
                     break;
 
                 default: 
                     Stream.putback(oper);
-                    enable_mode(main_settings);
+                    enable_mode(Main_settings, Stream);
                     break;
                 
             }

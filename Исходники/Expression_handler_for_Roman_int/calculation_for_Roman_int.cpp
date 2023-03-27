@@ -2,9 +2,9 @@
 #include "calculation_for_Roman_int.h"
 
 
-Roman_int third_order_for_Roman_int()
+Roman_int third_order_for_Roman_int(TokenStream &Stream)
 {
-    Roman_int value = second_order_for_Roman_int();
+    Roman_int value = second_order_for_Roman_int(Stream);
 
     while (cin) {
 
@@ -12,11 +12,11 @@ Roman_int third_order_for_Roman_int()
         
         switch (oper.type) {
             case '+':{
-                Roman_int second_value = second_order_for_Roman_int();
+                Roman_int second_value = second_order_for_Roman_int(Stream);
                 value += second_value;
                 break;}
             case '-':{
-                Roman_int second_value = second_order_for_Roman_int();
+                Roman_int second_value = second_order_for_Roman_int(Stream);
                 value -= second_value;
                 break;}
             default:{
@@ -28,9 +28,9 @@ Roman_int third_order_for_Roman_int()
 
     return value;
 }
-Roman_int second_order_for_Roman_int()
+Roman_int second_order_for_Roman_int(TokenStream &Stream)
 {
-    Roman_int value = primary_for_Roman_int();
+    Roman_int value = primary_for_Roman_int(Stream);
 
     while (cin) {
 
@@ -38,11 +38,11 @@ Roman_int second_order_for_Roman_int()
         
         switch (oper.type) {
             case '*':{
-                Roman_int second_value = primary_for_Roman_int();
+                Roman_int second_value = primary_for_Roman_int(Stream);
                 value *= second_value;
                 break;}
             case '/':{
-                Roman_int second_value = primary_for_Roman_int();
+                Roman_int second_value = primary_for_Roman_int(Stream);
                 value /= second_value;
                 break;}
             default:{
@@ -54,17 +54,16 @@ Roman_int second_order_for_Roman_int()
 
     return value;
 }
-Roman_int primary_for_Roman_int()
+Roman_int primary_for_Roman_int(TokenStream &Stream)
 {
     Token oper = Stream.get();
+    Roman_int ret;
 
     switch (oper.type) {
 
         case type_is_word:{
 
-            Roman_int ret;
             ret.set(oper.word);
-
             if(ret.empty())
                 throw "Неправильный ввод!";
 
@@ -74,13 +73,13 @@ Roman_int primary_for_Roman_int()
         }
         case '+':{
 
-            return primary_for_Roman_int();
+            return primary_for_Roman_int(Stream);
             break;
             
         }
         case '(':{
 
-            Roman_int result = third_order_for_Roman_int();
+            Roman_int result = third_order_for_Roman_int(Stream);
 
             oper = Stream.get();
             if (oper.type != ')')

@@ -10,7 +10,7 @@ int main() {
 
     try {
 
-        main_menu();
+        main_menu(Main_settings, Stream);
 
     }
     catch(const char* err){

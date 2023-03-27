@@ -26,7 +26,4 @@ public:
 
 };
 
-
-TokenStream Stream;
-
 void inicialiseStream(TokenStream& Stream);

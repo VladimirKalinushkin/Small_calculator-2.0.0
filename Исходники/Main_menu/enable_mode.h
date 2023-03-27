@@ -1,3 +1,3 @@
 
 
-void enable_mode(Settings & _settings);
+void enable_mode(Settings & _setting, TokenStream &Streams);

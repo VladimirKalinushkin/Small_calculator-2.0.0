@@ -1,19 +1,19 @@
 
 #include "calculation.h"
 
-double third_order() {
+double third_order(TokenStream &Stream) {
 
-    double value = second_order();
+    double value = second_order(Stream);
 
     while (cin) {
 
         Token oper = Stream.get();
         switch (oper.type) {
             case '+':{
-                value += second_order();
+                value += second_order(Stream);
                 break;}
             case '-':{
-                value -= second_order();
+                value -= second_order(Stream);
                 break;}
             default:{
                 Stream.putback(oper);
@@ -26,9 +26,9 @@ double third_order() {
 
 }
 
-double second_order() {
+double second_order(TokenStream &Stream) {
 
-    double value = first_order();
+    double value = first_order(Stream);
 
     while (cin) {
 
@@ -42,10 +42,10 @@ double second_order() {
 
                 switch (oper.type) {
                     case '*':{
-                        value *= first_order();
+                        value *= first_order(Stream);
                         break;}
                     case '/':{
-                        double second_value = first_order();
+                        double second_value = first_order(Stream);
                         if (second_value == 0)throw " Деление на нуль! \n";
                         value /= second_value;
                         break;}
@@ -66,15 +66,15 @@ double second_order() {
 
 }
 
-double first_order() {
+double first_order(TokenStream &Stream) {
 
-    double value = primary();
+    double value = primary(Stream);
 
     while (cin) {
 
         Token oper = Stream.get();
         if (oper.type == '^') {
-            double second_value = primary();
+            double second_value = primary(Stream);
             value = pow (value, second_value);
         }
         else {
@@ -87,7 +87,7 @@ double first_order() {
 
 }
 
-double primary() {
+double primary(TokenStream &Stream) {
 
     Token oper = Stream.get();
 
@@ -100,14 +100,14 @@ double primary() {
 
         }
         case '+':{
-            return primary();
+            return primary(Stream);
             break;}
         case '-':{
-            return  -primary();
+            return  -primary(Stream);
             break;}
         case '(':{
 
-            double result = third_order();
+            double result = third_order(Stream);
             oper = Stream.get();
             if (oper.type != ')') throw "нет ')' \n";
             else return result;
@@ -116,7 +116,7 @@ double primary() {
         }
         case type_is_function:{
             Stream.putback(oper);
-            return math_function();
+            return math_function(Stream);
             break;
         }
         case type_is_word: {
@@ -133,7 +133,7 @@ double primary() {
     return 0;
 }
 
-double math_function() {
+double math_function(TokenStream &Stream) {
 
     Token name_function = Stream.get();
     string name = name_function.word;
@@ -141,9 +141,9 @@ double math_function() {
     if (name == fmod_name) {
 
         if (Stream.get().type == '(') {
-            double left = primary();
+            double left = primary(Stream);
             if (Stream.get().type == ',') {
-                double right = primary();
+                double right = primary(Stream);
                 if ( right == 0 ) throw "Деление на нуль!\n";
                 if (Stream.get().type == ')') {
                     return fmod ( left, right );
@@ -155,7 +155,7 @@ double math_function() {
         else throw "Должно быть: fmod ( число, число )! \n";
     }
 
-    double result = primary();
+    double result = primary(Stream);
 
     if ( name == asin_name || name == acos_name || name == atan_name ) {
         if (result >= -1 & result <=1) {

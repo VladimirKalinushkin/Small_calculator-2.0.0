@@ -7,9 +7,6 @@ const char equality = '=';
 const char help = '?';
 const char settings = 's';
 
-const char mode_is_arabian = 'a';
-const char mode_is_roman = 'r';
-
 const char type_is_number = 'n';
 const char type_is_word = 'w';
 const char type_is_constante = 'c';
@@ -37,3 +34,7 @@ const char* log_name = "log";
 const char* ceil_name = "ceil";
 const char* floor_name = "floor";
 const char* fmod_name = "fmod";
+
+const char mode_is_arabian = 'a';
+const char mode_is_roman = 'r';
+const set <char> Modes_calculating = {mode_is_arabian, mode_is_roman};

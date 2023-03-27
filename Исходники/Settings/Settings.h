@@ -2,15 +2,15 @@
 class Settings
 {
 
-    char _mode;
+    char _mode_calculating;
 
     public:
 
-        Settings() { _mode = mode_is_arabian; }
+        Settings(const set <char> & Modes_calculating);
 
-        char get_mode() { return _mode; }
+        char get_mode() { return _mode_calculating; }
 
-        void set_main_settings();
+        void set_all_settings(const set <char> & Modes_calculating);
 
     private:
 
@@ -27,9 +27,7 @@ class Settings
             char *bad_value_char = NULL;
         };
 
-        void set_Mode_calculating();
-        char get_and_valid_Mode_calculating();
+        void set_Mode_calculating(const set <char> & Modes_calculating);
+        char get_and_valid_Mode_calculating(const set <char> & Modes_calculating);
 
 };
-
-Settings main_settings;

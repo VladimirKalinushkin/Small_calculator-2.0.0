@@ -1,8 +1,6 @@
 
 #include "calculation.cpp"
+#include "varriables.cpp"
 
-void inicialise_Varriable();
-
-bool set_Varriable();
-
-void expression_handler();
+void expression_handler(TokenStream &Stream);
+void key_word_handler(TokenStream &Stream);
