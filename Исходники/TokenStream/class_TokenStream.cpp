@@ -68,11 +68,11 @@ void TokenStream::inicialise_Varriable(string s, double value){
 
 void TokenStream::set_Varriable(string s, double value) {
 
-    for(auto t : VarriablesStream)
+    for(int i = 0; i < VarriablesStream.size(); i++)
     {
-        if(t.word == s)
+        if(VarriablesStream[i].word == s)
         {
-            t.value = value;
+            VarriablesStream[i].value = value;
             return;
         }
     }
