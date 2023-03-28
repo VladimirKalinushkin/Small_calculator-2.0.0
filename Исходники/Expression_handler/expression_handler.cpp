@@ -9,9 +9,8 @@ void expression_handler(TokenStream &Stream){
     if(oper.type == type_is_keyword)
         key_word_handler(Stream);
 
-    else if ( set_Varriable(Stream) );
-
-    else {
+    else if ( set_Varriable_or_status_set_is_bad(Stream) )
+    {
 
         double result = third_order(Stream);
         cout

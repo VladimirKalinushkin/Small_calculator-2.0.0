@@ -20,7 +20,7 @@ void set_new_varriable(TokenStream &Stream){
 
 }
 
-bool set_Varriable(TokenStream &Stream) {
+bool set_Varriable_or_status_set_is_bad(TokenStream &Stream) {
 
     Token oper = Stream.get();
     Token new_oper = Stream.get();
@@ -29,14 +29,14 @@ bool set_Varriable(TokenStream &Stream) {
 
         double value = third_order(Stream);
         Stream.set_Varriable( oper.word, value );
-        return true;
+        return false;
 
     }
     else {
 
         Stream.putback(new_oper);
         Stream.putback(oper);
-        return false;
+        return true;
 
     }
 
