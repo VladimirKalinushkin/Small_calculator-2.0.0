@@ -1,6 +1,6 @@
 
 const char exit_simbol = 'q';
-const char* promt = ">>";
+const char* promt = ">> ";
 const char* print_result = ": ";
 const char print = ';';
 const char equality = '=';

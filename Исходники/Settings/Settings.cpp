@@ -27,7 +27,7 @@ void Settings::set_Mode_calculating(const set <char> & Modes_calculating)
     
     cout << "Введите режим работы вычислений (полный режим с арабскими числами или ограниченный - с римскими): " 
          << mode_is_arabian << " / " << mode_is_roman 
-         << '\n';
+         << '\n' << promt;
     
     _mode_calculating = get_and_valid_Mode_calculating(Modes_calculating); 
 
@@ -52,18 +52,10 @@ Settings::exeption::exeption(char *msg)
 {
     message = msg;
 }
-Settings::exeption::exeption(char *msg, char &bad_value)
-{
-    message = msg;
-    bad_value_char = &bad_value;
-}
+
 void Settings::exeption::what()
 {
 
     if (message)
         cerr << message << "\n";
-    if (bad_value_char)
-        cerr << "  Передано: " << *bad_value_char << "\n";
-    if (!message)
-        cerr << "Неизвестная ошибка!\n";
 }

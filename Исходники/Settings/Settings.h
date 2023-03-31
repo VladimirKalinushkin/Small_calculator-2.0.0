@@ -18,13 +18,11 @@ class Settings
         {
         public:
             exeption(char *msg);
-            exeption(char *msg, char &bad_value);
 
             void what();
 
         private:
             char *message = NULL;
-            char *bad_value_char = NULL;
         };
 
         void set_Mode_calculating(const set <char> & Modes_calculating);
